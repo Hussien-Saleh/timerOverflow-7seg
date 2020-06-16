@@ -7,8 +7,6 @@
 • Every 1 second the 7-segment increments by one.
  */ 
 
-#include <avr/io.h>
-#include <avr/interrupt.h>
 #include "mcu.h"
 
 uint8_t tick = 0;
@@ -17,15 +15,15 @@ ISR(TIMER0_OVF_vect)
 {
 	tick++;
 	if(tick == OVERFLOW_COUNT){
-
+		
 		tick = 0;
-
 		if(PORTC == 9)	
 			PORTC = 0;
 		else
 	 		PORTC++;
 	}	
 }
+
 
 int main(void)
 {	
